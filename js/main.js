@@ -1,12 +1,10 @@
-import {
-    pacienteInput,
-    propietarioInput,
-    emailInput,
-    fechaInput,
-    sintomasInput,
-    formulario,
-    contenedorCitas
-} from "./selectors.js";
+const pacienteInput = document.querySelector('#paciente');
+const propietarioInput = document.querySelector('#propietario');
+const emailInput = document.querySelector('#email');
+const fechaInput = document.querySelector('#fecha');
+const sintomasInput = document.querySelector('#sintomas');
+const formulario = document.querySelector('#formulario-cita');
+const contenedorCitas = document.querySelector('#citas');
 
 //eventos
 pacienteInput.addEventListener('change', datosCita);
