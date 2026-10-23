@@ -1,11 +1,12 @@
-//selectores
-const pacienteInput = document.querySelector('#paciente');
-const propietarioInput = document.querySelector('#propietario');
-const emailInput = document.querySelector('#email');
-const fechaInput = document.querySelector('#fecha');
-const sintomasInput = document.querySelector('#sintomas');
-const formulario = document.querySelector('#formulario-cita');
-const contenedorCitas = document.querySelector('#citas')
+import {
+    pacienteInput,
+    propietarioInput,
+    emailInput,
+    fechaInput,
+    sintomasInput,
+    formulario,
+    contenedorCitas
+} from "./selectors.js";
 
 //eventos
 pacienteInput.addEventListener('change', datosCita);
@@ -14,6 +15,10 @@ emailInput.addEventListener('change', datosCita);
 fechaInput.addEventListener('change', datosCita);
 sintomasInput.addEventListener('change', datosCita);
 formulario.addEventListener('submit', submitCita);
+document.addEventListener('DOMContentLoaded', () => {
+    citas.listaCitas = JSON.parse(localStorage.getItem('citas')) || [];
+    citas.mostrarCitas();
+})
 
 //objetos
 const citaObj = {
@@ -61,6 +66,7 @@ class AdminCitas {
     agregarCita(citaObj) {
         this.listaCitas.push({ ...citaObj });
         this.mostrarCitas();
+        sincronizarStorage();
     }
 
     mostrarCitas() {
@@ -115,11 +121,13 @@ class AdminCitas {
     editarCita(citaActualizada) {
         this.listaCitas = this.listaCitas.map(cita => cita.id === citaActualizada.id ? citaActualizada : cita)
         this.mostrarCitas();
+        sincronizarStorage();
     }
 
     eliminarCita(idCita) {
         this.listaCitas = this.listaCitas.filter(cita => cita.id !== idCita);
         this.mostrarCitas();
+        sincronizarStorage();
     }
 }
 
@@ -181,6 +189,14 @@ function cargarEdicionCita(cita) {
     state.editando = true;
 
     formulario.querySelector('input[type="submit"]').value = "Actualizar Datos";
+}
+
+function sincronizarStorage() {
+    if (citas.listaCitas.length === 0) {
+        localStorage.clear();
+    } else {
+        localStorage.setItem('citas', JSON.stringify(citas.listaCitas));
+    }
 }
 
 //instancias
