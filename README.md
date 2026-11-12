@@ -1,6 +1,6 @@
 # appointment Management
 
-An veterinary medical appointment management application built with JavaScript that allows users to register, edit, delete, and store information about patients and their owners in real time with data persistence.
+A veterinary appointment management application built with JavaScript that allows users to register, edit, delete, and manage patient and owner information, with data persistence using IndexedDB.
 ## Live Demo
 
 [View the project](https://absantamariav.github.io/administrador-citas/)
@@ -8,16 +8,18 @@ An veterinary medical appointment management application built with JavaScript t
 ## Features
 
 * Full CRUD Management: Allows you to create, read, update, and delete patient appointments.
-* Data Persistence: Uses localStorage to preserve the list of appointments even after reloading or closing the page.
+* Data Persistence: Uses IndexedDB to store appointment records directly in the browser, ensuring data remains available even after reloading or closing the page.
+* Asynchronous Data Operations: Handles database operations asynchronously using IndexedDB.
 * Real-Time Validation: Checks for required fields in the form with custom dynamic alerts.
 * Interactive Interface: Modern, stylized UI built with Tailwind CSS and real-time DOM updates.
-* Modular Architecture: Object-Oriented Programming (OOP) implementation using classes to handle notification logic and appointment management.
+* Modular Architecture: Implements Object-Oriented Programming (OOP) and JavaScript ES Modules to organize application logic and separate responsibilities.
 
 ## Technologies
 
 * HTML5
 * CSS3
 * JavaScript (ES6+)
+* IndexedDB
 * Tailwind CSS.
 
 ## 📸 Screenshots
