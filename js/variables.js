@@ -12,5 +12,6 @@ export const citaObj = {
 }
 
 export const state = {
-    editando: false
+    editando: false,
+    DB: null
 }
